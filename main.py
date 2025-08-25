@@ -1,6 +1,8 @@
 import pygame
 from constants import *
 from player import *
+from asteroid import * 
+from asteroidfield import *
 
 
 def main():
@@ -15,15 +17,21 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
-    # Create groups of objects
+    # Create object groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
 
-    # Set groups as containers for the Player
+    # Set groups as containers for the Player and Asteroids
     Player.containers = (updatable, drawable) 
+    Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = (updatable)
 
     # Create Player in the center of the window
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+
+    # Create a field of randomly generated asteroids
+    asteroidfield = AsteroidField()
 
     while True: 
         # Check if the user has closed the window and exit the game loop
