@@ -14,7 +14,7 @@ class Shot(CircleShape):
             (255,255,255), 
             self.position, 
             SHOT_RADIUS, 
-            4
+            2
         )
 
     def update(self, dt): 
